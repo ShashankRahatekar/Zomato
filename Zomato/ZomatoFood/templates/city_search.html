@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Zomato Restaurants </title>
+	<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+#Mini-Hotel-Pune{
+	margin-left: 95px;
+	margin-top: 45px;
+}
+
+#Mini-Hotel-Pune>h2{
+	text-align: center;
+}
+
+#Mini-Hotel-Pune>p {
+	font-size: 23px; 
+}
+
+#Search-City {
+	padding-top: 23px;
+	padding-left: 245px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<!-- Menus :-
+		Categories
+		Cities
+		Collections
+		cuisines
+		geocode (Restaurants According to location)
+		Restaurant :-
+			Daily Menu
+			Review
+			Search For Hotel
+	 -->
+	 <div id="menuItem">
+	 	<ul>
+	 		<li> <a href=""> Categories </a> </li>
+	 		<li> <a href=""> Cities </a> </li>
+	 		<li> <a href=""> Collections </a> </li>
+	 		<li> <a href=""> Restaurant List </a> </li>
+	 	</ul>
+	 </div>
+	 
+	 <div id="Search-City">
+	 	<form method="post">{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="Submit">
+		</form>
+	 </div>
+
+
+	 	<!-- Div To Display Top Restaurants Categories Of Pune -->
+	 <div id="Mini-Hotel-Pune">
+	 	<h2> Top Trending Categries In Pune </h2>
+	 	{% csrf_token %}
+	 	{% for i in data %}
+	 		<a href="{{ i.3 }}"><p style="float: left; font-size: 15pt; text-align: center; width: 25%; margin-right: 8%; margin-bottom: 0.5em;"><img src="{{ i.1 }}" style="width: 290px; height: 244px" alt="{{ i.2 }}">{{ i.0 }}</p></a>
+	 	{% endfor %}
+	 </div>
+</body>
+
+</html>

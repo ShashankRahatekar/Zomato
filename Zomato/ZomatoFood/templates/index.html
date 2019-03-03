@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Zomato Restaurants </title>
+	<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		document.getElementById('Mini-Home-Top-Pune').innerHTML='<object type="text/html" data="city_search.html"> </object>';
+	});
+</script>
+</head>
+<body>
+	<!-- Menus :-
+		Categories
+		Cities
+		Collections
+		cuisines
+		geocode (Restaurants According to location)
+		Restaurant :-
+			Daily Menu
+			Review
+			Search For Hotel
+	 -->
+	 <div id="menuItem">
+	 	<ul>
+	 		<li> <a href=""> Categories </a> </li>
+	 		<li> <a href=""> Cities </a> </li>
+	 		<li> <a href=""> Collections </a> </li>
+	 		<li> <a href=""> Restaurant List </a> </li>
+	 	</ul>
+	 </div>
+	 <!-- Div To Display Top Restaurants Categories Of Pune -->
+	 <div id="Mini-Home-Top-Pune">
+	 	{% csrf_token %}
+	 	{{  }}
+	 </div>
+</body>
+
+</html>

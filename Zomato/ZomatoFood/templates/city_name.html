@@ -1,0 +1,25 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h2> Hotel List </h2>
+		{% for i in hotels_list %}
+			<p> {{ i.0 }} :: {{ i.1 }} :: {{ i.2 }} :: {{ i.3 }} </p>
+		{% endfor %}
+		<h2> Cuisine Details Total {{ total_cuision }} found </h2>
+		{% for i in cusion_data %}
+			<p> {{ i.0 }} :: {{ i.1 }} </p>	
+		{% endfor %}
+		<table>
+			{% for i in data %}
+			<tr>
+				<td> {{ i.0 }} </td>
+				<td> {{ i.1 }} </td>
+				<td> <img src="{{ i.2 }}" width="125px"> </td>
+				<td> <a href="{{ i.4 }}"> {{ i.3 }} </a> </td>
+			</tr>
+			{% endfor %}
+		</table>
+			
+	</body>
+</html>

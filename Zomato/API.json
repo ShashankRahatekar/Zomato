@@ -1,0 +1,19 @@
+{
+	"api" : [
+		 {
+		 	"name" : "MapQuest" ,
+			"api" : "gBA24oeBGHqeluUgWReWKiFqJ0J6fXrQ",
+			"consumer-secret" : "Gc48vjR4GmJcdQ9i"
+		},
+		 {
+			"name" : "Zomato" ,
+			"api" : "305821bf05bc53f67d7720d7f09eed61",
+			"consumer-secret" : null
+		},
+		{
+			"name" : "Twitter" ,
+			"api" : null,
+			"consumer-secret" : null
+		}
+	]
+}
