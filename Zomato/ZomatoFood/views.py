@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django import template
 from django.template.loader import get_template
 
-from API.city import LoadCity, Collections_fetch, Cusion_fetch, Hotel_data
+from API.city import LoadCity, Collections_fetch, Cusion_fetch, Hotel_data, Categories_List
 
 from ZomatoFood.forms import GetName
 # Create your models here.
@@ -106,3 +106,16 @@ def Hotel_List(request, city):
 		data.append([hotel_id, hotel_name, hotel_addr, hotel_local, hotel_city])
 
 	return data
+#Returns Categories_List Form and Result
+def collection_List(request):
+	print('Inside collection_List')			
+	coll_data = Categories_List(request)
+	data = []
+
+	for d in coll_data['categories']:
+		data.append([d['categories']['id'], d['categories']['name']])
+	cont = {
+		"data" : data
+	}
+	temp = get_template('categories_Result.html')
+	return HttpResponse(temp.render(cont, request))

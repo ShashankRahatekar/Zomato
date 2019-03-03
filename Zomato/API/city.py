@@ -36,3 +36,12 @@ def Hotel_data(city_name):
 	Hotel_data_return = Hotel_Response.json()
 
 	return Hotel_data_return
+
+def Categories_List(request):
+	url = 'https://developers.zomato.com/api/v2.1/categories'
+
+	cat_return = requests.get(url, headers={"user-key" : api, "Accept": "application/json"})
+
+	cat_data = cat_return.json()
+
+	return cat_data

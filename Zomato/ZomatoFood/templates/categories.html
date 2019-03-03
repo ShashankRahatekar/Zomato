@@ -71,23 +71,15 @@ li a:hover {
 	 		<li> <a href=""> Restaurant List </a> </li>
 	 	</ul>
 	 </div>
-	<!--	 
+
 	 <div id="Search-City">
 	 	<form method="post">{% csrf_token %}
 			{{ form }}
 			<input type="submit" value="Submit">
 		</form>
 	 </div>
-	-->
 
-	 	<!-- Div To Display Top Restaurants Categories Of Pune -->
-	 <div id="Mini-Hotel-Pune">
-	 	<h2 class="titleHead"> Top Trending Categries In Pune </h2>
-	 	{% csrf_token %}
-	 	{% for i in data %}
-	 		<a href="{{ i.3 }}"><p style="float: left; color: white; font-size: 15pt; text-align: center; width: 25%; margin-right: 8%; margin-bottom: 0.5em;"><img src="{{ i.1 }}" style="width: 290px; height: 244px" alt="{{ i.2 }}">{{ i.0 }}</p></a>
-	 	{% endfor %}
-	 </div>
+
 
 	 <div id="footer">
 	 	<p> Copyright &copy; Shashank Rahatekar </p>
