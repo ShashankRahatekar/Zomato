@@ -6,9 +6,14 @@ from django.shortcuts import render
 from django import template
 from django.template.loader import get_template
 
-from API.city import LoadCity, Collections_fetch, Cusion_fetch, Hotel_data, Categories_List
+from API.city import(
+	LoadCity,
+	Collections_fetch,
+	Cusion_fetch,
+	Hotel_data,
+	Categories_List) 
 
-from ZomatoFood.forms import GetName
+from ZomatoFood.forms import GetName, SearchHotelIn
 # Create your models here.
 #Get city code of Zomato City
 def cities(request, name):
@@ -119,3 +124,51 @@ def collection_List(request):
 	}
 	temp = get_template('categories_Result.html')
 	return HttpResponse(temp.render(cont, request))
+
+def SearchHotelsInCity(request):
+	if request.method == 'POST':
+		SearchForm = SearchHotelIn(request.POST)
+
+		if SearchForm.is_valid():
+			city_name = SearchForm.cleaned_data['SearchHotel']
+
+			#get city id of entered cityName
+			city_ID = returnCityID(request, city_name)
+
+			#Store Details of Hotels
+			Hotels_CollectionData = CityCollectionReturn(request, city_ID)
+			context = {
+				"data" : Hotels_CollectionData,
+			}
+			template_Name = get_template('hotel_collection_list.html')
+
+			return HttpResponse(template_Name.render(context, request))
+
+	else:
+		form = SearchHotelIn()
+
+		context = {
+			"form" : form,
+		}
+
+		return render(request, "Search_Hotel.html", context)
+
+def returnCityID(request, city_name):
+	city_data = LoadCity(city_name)
+	id = 0
+	for d in city_data['location_suggestions']:
+		id = d['id']
+	
+	return id
+
+def CityCollectionReturn(request, city_id):
+	collection_data = Collections_fetch(city_id)
+	data = []
+
+	for d in collection_data['collections']:
+		title = d['collection']['title']
+		url = d['collection']['url']
+		img = d['collection']['image_url']
+		desc = d['collection']['description']
+		data.append([title, url, img, desc])
+	return data

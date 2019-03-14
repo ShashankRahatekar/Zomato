@@ -1,0 +1,11 @@
+{
+	"methods" : [
+		"method":
+		 {
+		 	"name" : "SearchHotelsInCity",
+			"variables" : [
+				"SearchForm", "city_name", "city_ID", "hotel_collection_list.html", "Search_Hotel.html"
+			]
+		}
+	]
+}

@@ -1,97 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title> Zomato Restaurants </title>
-	<style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>foodadda.herokuapp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .search-form .form-group {
+  float: right !important;
+  transition: all 0.35s, border-radius 0s;
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  border-radius: 25px;
+  border: 1px solid #ccc;
 }
-
-li {
-  float: left;
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  height: 45px;
+  
+  background: transparent;
+  box-shadow: none;
+  display:block;
 }
-
-li a {
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
   display: block;
-  color: white;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
   text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
 }
 
-li a:hover {
-  background-color: #111;
-}
-
-#Mini-Hotel-Pune{
-	background-color: #332;
-	margin-left: 95px;
-	position: relative;
-}
-
-.titleHead{
-	margin-left: -54px;
-	background-color: #333;
-	width: 100%;
-}
-
-#Search-City {
-	padding-top: 23px;
-	padding-left: 245px;
-}
-
-#footer{
-	margin-top: 3px;
-	background-color: #333;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<!-- Menus :-
-		Categories
-		Cities
-		Collections
-		cuisines
-		geocode (Restaurants According to location)
-		Restaurant :-
-			Daily Menu
-			Review
-			Search For Hotel
-	 -->
-	 <div id="menuItem">
-	 	<ul>
-	 		<li> <a href="{% url 'Categories' %}"> Categories </a> </li>
-	 		<li> <a href=""> Cities </a> </li>
-	 		<li> <a href=""> Collections </a> </li>
-	 		<li> <a href=""> Restaurant List </a> </li>
-	 	</ul>
-	 </div>
-	<!--	 
-	 <div id="Search-City">
-	 	<form method="post">{% csrf_token %}
-			{{ form }}
-			<input type="submit" value="Submit">
-		</form>
-	 </div>
-	-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Search For Zomato near You</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+            <form method="post" class="search-form">
+                <div class="form-group has-feedback">
+            		<label for="search" class="sr-only">Search</label>
+            		{% csrf_token %}
+            		{% for f in form %}
+            			{{ f }}
+            		{% endfor %}
+            		<!--<input type="text" class="form-control" style="font-size: 30px;" name="search" id="search" placeholder="search"> -->
+              		<span class="glyphicon glyphicon-search form-control-feedback"></span>
+            	</div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
 
-	 	<!-- Div To Display Top Restaurants Categories Of Pune -->
-	 <div id="Mini-Hotel-Pune">
-	 	<h2 class="titleHead"> Top Trending Categries In Pune </h2>
-	 	{% csrf_token %}
-	 	{% for i in data %}
-	 		<a href="{{ i.3 }}"><p style="float: left; color: white; font-size: 15pt; text-align: center; width: 25%; margin-right: 8%; margin-bottom: 0.5em;"><img src="{{ i.1 }}" style="width: 290px; height: 244px" alt="{{ i.2 }}">{{ i.0 }}</p></a>
-	 	{% endfor %}
-	 </div>
-
-	 <div id="footer">
-	 	<p> Copyright &copy; Shashank Rahatekar </p>
-	 </div>
+</script>
 </body>
+</html>
 
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+  box-sizing: border-box;
+}
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+  }
+body{
+
+  background: #234d60;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: auto;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+  resize: vertical;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -91px;
+  width: auto;
+  height: auto;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+
+</head>
+<body>
+		<div class="wrap">
+   <div class="search">
+	    <form method="post">
+	    	{% csrf_token %}
+		   	{% for f in form %}
+		   		{{ f }}
+		   	{% endfor %}
+	   	<input type="submit" value="Go" class="searchButton">
+	        <i class="fa fa-search"></i>
+	    </form>
+
+   		</div>
+	</div>
+
+</body>
 </html>

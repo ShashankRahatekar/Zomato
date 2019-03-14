@@ -1,3 +1,6 @@
+
+
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,27 +57,11 @@ li a:hover {
 	background-color: #333;
 }
 
-#imgCntr {
-    text-align: justify;
-}
-
-#imgCntr img {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-}
-
-#imgCntr:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-}
-
 </style>
 </head>
 
 <body>
-	<!-- Menus :-
+	 Menus :-
 		Categories
 		Cities
 		Collections
@@ -84,7 +71,7 @@ li a:hover {
 			Daily Menu
 			Review
 			Search For Hotel
-	 -->
+	 
 	 
 	 
 	 <div class="container">
@@ -101,15 +88,37 @@ li a:hover {
     </ul>
   </div>
 </nav>
+		 
 	 <div id="Search-City">
 	 	<form method="post">{% csrf_token %}
 			{{ form }}
 			<input type="submit" value="Submit">
 		</form>
 	 </div>
+	
 
-
-
+	 	 Div To Display Top Restaurants Categories Of Pune 
+	 	{% for i in data %}
+	  		<div class="jumbotron">
+	  			<div>
+	  				<img class="img-responsive" src="{{ i.1 }}" alt="Chania" width="320" height="345">
+	  				
+	  			</div>
+	    		
+	    		<a href="{{ i.1 }}"> {{ i.0 }} </a> 
+	  		</div>	
+	  	{% endfor %}
+		
+	 </div>
+	 <!--
+	 <div id="Mini-Hotel-Pune">
+	 	<h2 class="titleHead"> Top Trending Categries In Pune </h2>
+	 	{% csrf_token %}
+	 	{% for i in data %}
+	 		<a href="{{ i.3 }}"><p style="float: left; color: white; font-size: 15pt; text-align: center; width: 25%; margin-right: 8%; margin-bottom: 0.5em;"><img src="{{ i.1 }}" style="width: 290px; height: 244px" alt="{{ i.2 }}">{{ i.0 }}</p></a>
+	 	{% endfor %}
+	 </div>
+	
 	 <div id="footer">
 	 	<p> Copyright &copy; Shashank Rahatekar </p>
 	 </div>

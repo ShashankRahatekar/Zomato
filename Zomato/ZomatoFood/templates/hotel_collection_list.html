@@ -54,22 +54,6 @@ li a:hover {
 	background-color: #333;
 }
 
-#imgCntr {
-    text-align: justify;
-}
-
-#imgCntr img {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-}
-
-#imgCntr:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-}
-
 </style>
 </head>
 
@@ -101,18 +85,20 @@ li a:hover {
     </ul>
   </div>
 </nav>
-	 <div id="Search-City">
-	 	<form method="post">{% csrf_token %}
-			{{ form }}
-			<input type="submit" value="Submit">
-		</form>
+</div>
+<div class="container clearfix">
+	 	{% for i in data %}
+	  		<div class="jumbotron">
+	  			<div class="row">
+  					<div class="col-md-4"><a href="{{ i.1 }}"><img src="{{ i.2 }}" style="width: 220px; height: auto;"> <br/> {{ i.0 }} </a> 
+	    			</div>
+  					<div class="col-md-4"><p> {{ i.3 }} </p></div>
+				</div>
+	    		
+	  		</div>	
+	  	{% endfor %}
+		
 	 </div>
-
-
-
-	 <div id="footer">
-	 	<p> Copyright &copy; Shashank Rahatekar </p>
-	 </div>
-</body>
-
+	 		
+	</body>
 </html>

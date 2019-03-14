@@ -14,9 +14,9 @@ def LoadCity(name):
 def Collections_fetch(city_id):
 	url = 'https://developers.zomato.com/api/v2.1/collections?city_id='
 	Collections_response = requests.get(url+str(city_id), headers={"user-key" : api, "Accept": "application/json"})
-	print(city_id)
+	
 	collections_data = Collections_response.json()
-
+	print(collections_data)
 	return collections_data
 
 def Cusion_fetch(city_id):

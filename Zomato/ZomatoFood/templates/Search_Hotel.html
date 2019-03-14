@@ -101,18 +101,17 @@ li a:hover {
     </ul>
   </div>
 </nav>
-	 <div id="Search-City">
-	 	<form method="post">{% csrf_token %}
-			{{ form }}
-			<input type="submit" value="Submit">
-		</form>
-	 </div>
-
-
-
-	 <div id="footer">
-	 	<p> Copyright &copy; Shashank Rahatekar </p>
-	 </div>
+<div class="container">
+  <h2>Enter City Name </h2>
+  <form method="post">{% csrf_token %}
+    <div class="form-group">
+      {{ form }}
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+	 	<!-- Div To Display Top Restaurants Categories Of Pune -->
+	
 </body>
 
 </html>
